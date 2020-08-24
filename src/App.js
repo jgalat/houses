@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import Grid from './components/Grid';
-import House from './components/House';
+import HouseCard from './components/HouseCard';
 import Loader from './components/Loader';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Grid>
           {houses.map(house => {
             const { id, ...houseInfo } = house;
-            return <House key={id} {...houseInfo} />;
+            return <HouseCard key={id} {...houseInfo} />;
           })}
         </Grid>
         <Loader />

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Grid({ children }) {
-  return <StyledGrid>{children}</StyledGrid>;
+  return <StyledGrid data-testid='grid'>{children}</StyledGrid>;
 }
 
 export default Grid;

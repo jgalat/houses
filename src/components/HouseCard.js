@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function House({ address, homeowner: homeOwner, price, photoURL }) {
+function HouseCard({ address, homeowner: homeOwner, price, photoURL }) {
   const formattedPrice = price.toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -13,29 +13,34 @@ function House({ address, homeowner: homeOwner, price, photoURL }) {
         <HouseImg
           alt={`A house located at ${address} valued at ${formattedPrice}`}
           src={photoURL}
+          data-testid="house-img"
         />
       </picture>
       <Footer>
         <Row>
-          <Address>{address}</Address>
-          <Price>{formattedPrice}</Price>
+          <Address title={address} data-testid="address">
+            {address}
+          </Address>
+          <Price data-testid="price">{formattedPrice}</Price>
         </Row>
         <Row>
-          <HomeOwner><strong>Owner:</strong> {homeOwner}</HomeOwner>
+          <HomeOwner data-testid="home-owner">
+            <strong>Owner:</strong> {homeOwner}
+          </HomeOwner>
         </Row>
       </Footer>
     </Card>
   );
 }
 
-House.propTypes = {
+HouseCard.propTypes = {
   address: PropTypes.string.isRequired,
   homeowner: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   photoURL: PropTypes.string.isRequired,
 };
 
-export default House;
+export default HouseCard;
 
 const Card = styled.div`
   min-height: 300px;

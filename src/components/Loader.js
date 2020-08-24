@@ -26,7 +26,7 @@ function Loader() {
     <Container>
       <Spinner ref={ref} />
       {retry > 0 && (
-        <Retry>
+        <Retry data-testid='retry'>
           Retry #{retry} in {2 ** retry} seconds
         </Retry>
       )}

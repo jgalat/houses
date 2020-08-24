@@ -1,14 +1,16 @@
 import { all, call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
-import fetchApi from '../api';
+import { fetchApi } from '../api';
 import actions, { storeHouses, fetchHouses, retry } from './actions';
 
-function* fetchHousesSaga() {
+export function* fetchHousesSaga() {
   try {
     const currPage = yield select(state => state.currPage);
     const { data } = yield call(fetchApi, currPage + 1);
     if (data.ok) {
       yield put(storeHouses(data.houses));
+    } else {
+      throw new Error('Service unavailable');
     }
   } catch (e) {
     yield put(retry());

@@ -1,6 +1,6 @@
 import actions from './actions';
 
-const initialState = {
+export const initialState = {
   houses: [],
   currPage: 0,
   loading: false,
